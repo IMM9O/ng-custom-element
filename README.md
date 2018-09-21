@@ -1,27 +1,72 @@
 # CardElement
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.2.
+How To genrate custom element to use it ouside angular app
 
-## Development server
+First add `@angular/elements`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```bash
+$ ng add @angular/elements --project=card-element
+```
 
-## Code scaffolding
+Second add nessry polyfills
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+$ npm i @webcomponents/custom-elements --save
+```
 
-## Build
+Don't forget to add it to `polyfills.ts` file
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```ts
+import "@webcomponents/custom-elements/src/native-shim";
+import "@webcomponents/custom-elements/custom-elements.min";
+```
 
-## Running unit tests
+Third create your component
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+$ ng g c card-element
+```
 
-## Running end-to-end tests
+Just change ViewEncapsulation to be Native
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```ts
+@Component({
+  selector: 'card-element',
+  templateUrl: './card-element.component.html',
+  styleUrls: ['./card-element.component.css'],
+  encapsulation: ViewEncapsulation.Native
+})
+```
 
-## Further help
+Finnaly change your module to use custom element
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```ts
+// Angular imports
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule, Injector } from "@angular/core";
+import { createCustomElement } from "@angular/elements";
+
+// Component that needs to convert it to customElement
+import { CardElementComponent } from "./card-element/card-element.component";
+
+@NgModule({
+  declarations: [CardElementComponent],
+  imports: [BrowserModule],
+  providers: [],
+  entryComponents: [CardElementComponent]
+})
+export class AppModule {
+  constructor(private injector: Injector) {}
+
+  ngDoBootstrap() {
+    const el = createCustomElement(CardElementComponent, {
+      injector: this.injector
+    });
+    customElements.define("card-element", el);
+  }
+}
+```
+
+### Build
+
+Run `npm run build:elements` to build the element. The build artifacts will be stored in the elements/ directory.
