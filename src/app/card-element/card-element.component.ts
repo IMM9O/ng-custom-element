@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
-  selector: 'card-element',
+  selector: 'app-card-element',
   templateUrl: './card-element.component.html',
   styleUrls: ['./card-element.component.css'],
   encapsulation: ViewEncapsulation.Native

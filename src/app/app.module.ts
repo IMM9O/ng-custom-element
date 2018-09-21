@@ -4,9 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 
 @NgModule({
-  declarations: [CardElementComponent],
   imports: [BrowserModule],
   providers: [],
+  declarations: [CardElementComponent],
   entryComponents: [CardElementComponent]
 })
 export class AppModule {
@@ -14,6 +14,6 @@ export class AppModule {
 
   ngDoBootstrap() {
     const el = createCustomElement(CardElementComponent, { injector: this.injector });
-    customElements.define('card-element', el);
+    customElements.define('post-cell', el);
    }
  }
