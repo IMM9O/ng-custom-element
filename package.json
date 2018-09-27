@@ -3,12 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "build:elements": "ng build --prod --aot --build-optimizer --output-hashing none && node build-elements.js"
+    "start:card": "ng serve --project=card-element -o",
+    "build:card": "ng build --project=card-element --prod && node build-elements.js"
   },
   "private": true,
   "dependencies": {

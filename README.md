@@ -1,33 +1,33 @@
 # CardElement
 
-How To genrate custom element to use it ouside angular app
+## How To genrate custom element to use it ouside angular app
 
-First add `@angular/elements`
+1. Add `@angular/elements`
 
 ```bash
 $ ng add @angular/elements --project=card-element
 ```
 
-Second add nessry polyfills
+2. Add nessry polyfills
 
 ```bash
 $ npm i @webcomponents/custom-elements --save
 ```
 
-Don't forget to add it to `polyfills.ts` file
+* Don't forget to add it to `polyfills.ts` file
 
 ```ts
 import "@webcomponents/custom-elements/src/native-shim";
 import "@webcomponents/custom-elements/custom-elements.min";
 ```
 
-Third create your component
+3. Create your component
 
 ```bash
 $ ng g c card-element
 ```
 
-Just change ViewEncapsulation to be Native
+* Just change ViewEncapsulation to be Native
 
 ```ts
 @Component({
@@ -38,7 +38,7 @@ Just change ViewEncapsulation to be Native
 })
 ```
 
-Finnaly change your module to use custom element
+4. Change your module to use custom element
 
 ```ts
 // Angular imports
@@ -67,6 +67,13 @@ export class AppModule {
 }
 ```
 
-### Build
+## Build
 
-Run `npm run build:elements` to build the element. The build artifacts will be stored in the elements/ directory.
+Run `npm run build:card` to build the element. The build artifacts will be stored in the elements/ directory.
+
+
+## How to use this project
+
+1. Type `npm install` in your termainal to install packages dependencies
+2. Type `npm run start:card` in your termainal to start card project
+3. You code live and running at [http://localhost:4200](http://localhost:4200/#)

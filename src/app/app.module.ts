@@ -1,7 +1,8 @@
-import { createCustomElement } from '@angular/elements';
-import { CardElementComponent } from './card-element/card-element.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { createCustomElement } from '@angular/elements';
+
+import { CardElementComponent } from './card-element/card-element.component';
 
 @NgModule({
   imports: [BrowserModule],
@@ -14,6 +15,6 @@ export class AppModule {
 
   ngDoBootstrap() {
     const el = createCustomElement(CardElementComponent, { injector: this.injector });
-    customElements.define('post-cell', el);
+    customElements.define('facebook-card', el);
    }
  }
