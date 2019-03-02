@@ -1,10 +1,12 @@
 {
-  "name": "card-element",
+  "name": "ng-element",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start:card": "ng serve --project=card-element -o",
-    "build:card": "ng build --project=card-element --prod && node build-elements.js"
+    "serve:ng-element": "ng serve  -o   --configuration=dev                                    --project=ng-element",
+    "build:stage:ng-element": "ng build --configuration=stage       --base-href=/ --stats-json --project=ng-element",
+    "build:prod:ng-element": "ng build  --configuration=production  --base-href=/ --stats-json --project=ng-element",
+    "report:ng-element": "webpack-bundle-analyzer dist/ng-element/stats.json",
+    "build-card-element": "build:prod:ng-element && node build-elements.js"
   },
   "private": true,
   "dependencies": {
@@ -19,13 +21,14 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@webcomponents/custom-elements": "^1.2.0",
+    "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
     "document-register-element": "^1.8.1",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.8.0",
+    "@angular-devkit/build-angular": "^0.13.1",
     "@angular/cli": "~6.2.2",
     "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",
@@ -45,6 +48,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~2.9.2"
+    "typescript": "~2.9.2",
+    "webpack-bundle-analyzer": "^3.0.4"
   }
 }
