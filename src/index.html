@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
     <title>Custom Element</title>
-</head>
+  </head>
 
-<body>
-    <facebook-card title="Custom Element"></facebook-card>
-</body>
+  <body>
+    <facebook-card
+      title="Custom Element"
+      name="Donna Marshall"
+      caption="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+      avtar="https://uinames.com/api/photos/female/15.jpg"
+      image="https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"
+    >
+      <!-- Using Content Projection in angular are like slots in web component stander -->
+      <i icon-like class="fa fa-thumbs-o-up like-icon"></i>
+      <i icon-comment class="fa fa-comment-o"></i>
+      <i icon-share class="fa fa-share"></i>
+    </facebook-card>
 
+    <script>
+      /**
+       * Here you can interact with custome element using pure javascript
+       * You can Listen to built-in events as well as custome events
+       */
+      const el = document.querySelector('facebook-card');
+      el.addEventListener('likeNotify', e => {
+        console.log('Like Cliked');
+      });
+      el.addEventListener('shareNotify', e => {
+        console.log('Share Cliked');
+      });
+      el.addEventListener('commentNotify', e => {
+        console.log('Comment Cliked');
+      });
+    </script>
+  </body>
 </html>
