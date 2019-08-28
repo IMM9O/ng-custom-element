@@ -3,14 +3,12 @@ const concat = require('concat');
 
 (async function build() {
   const jsFiles = [
-    './dist/card-element/runtime.js',
-    './dist/card-element/polyfills.js',
-    './dist/card-element/scripts.js',
-    './dist/card-element/main.js'
+    './dist/ng-element/runtime.js',
+    './dist/ng-element/polyfills.js',
+    './dist/ng-element/scripts.js',
+    './dist/ng-element/main.js'
   ];
-  const cssFiles = [
-    './dist/card-element/styles.css'
-  ];
+  const cssFiles = ['./dist/ng-element/styles.css'];
 
   await fs.ensureDir('elements');
   await concat(jsFiles, 'elements/card-element.js');

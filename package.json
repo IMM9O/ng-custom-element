@@ -4,9 +4,9 @@
   "scripts": {
     "serve:ng-element": "ng serve  -o   --configuration=dev                                    --project=ng-element",
     "build:stage:ng-element": "ng build --configuration=stage       --base-href=/ --stats-json --project=ng-element",
-    "build:prod:ng-element": "ng build  --configuration=production  --base-href=/ --stats-json --project=ng-element",
+    "build:prod:ng-element": "ng build  --configuration=production  --base-href=/ --stats-json --project=ng-element --outputHashing=none",
     "report:ng-element": "webpack-bundle-analyzer dist/ng-element/stats.json",
-    "build-card-element": "build:prod:ng-element && node build-elements.js"
+    "build-card-element": "npm run build:prod:ng-element && node build-elements.js"
   },
   "private": true,
   "dependencies": {

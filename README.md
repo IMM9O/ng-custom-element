@@ -1,11 +1,11 @@
-# CardElement
+# Angular Element
 
 ## How To genrate custom element to use it ouside angular app
 
 1. Add `@angular/elements`
 
 ```bash
-$ ng add @angular/elements --project=card-element
+$ ng add @angular/elements --project=[project-name]
 ```
 
 2. Add nessry polyfills
@@ -24,16 +24,16 @@ import '@webcomponents/custom-elements/custom-elements.min';
 3. Create your component
 
 ```bash
-$ ng g c card-element
+$ ng g c [angular-element]
 ```
 
 - Just change ViewEncapsulation to be Native
 
 ```ts
 @Component({
-  selector: 'card-element',
-  templateUrl: './card-element.component.html',
-  styleUrls: ['./card-element.component.css'],
+  selector: 'angular-element',
+  templateUrl: './angular-element.component.html',
+  styleUrls: ['./angular-element.component.css'],
   encapsulation: ViewEncapsulation.Native
 })
 ```
@@ -47,29 +47,32 @@ import { NgModule, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 
 // Component that needs to convert it to customElement
-import { CardElementComponent } from './card-element/card-element.component';
+import { AngularElementComponent } from './angular-element/angular-element.component';
 
 @NgModule({
-  declarations: [CardElementComponent],
+  declarations: [AngularElementComponent],
   imports: [BrowserModule],
   providers: [],
-  entryComponents: [CardElementComponent]
+  entryComponents: [AngularElementComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {}
 
   ngDoBootstrap() {
-    const el = createCustomElement(CardElementComponent, {
+    // using createCustomElement from angular package it will convert angular component to stander web component
+    const el = createCustomElement(AngularElementComponent, {
       injector: this.injector
     });
-    customElements.define('card-element', el);
+    // using built in the browser to create your own custome element name [HTML Tag]
+    customElements.define('web-element', el);
   }
 }
 ```
 
-## Build
+5. Build
 
-Run `npm run build:card` to build the element. The build artifacts will be stored in the elements/ directory.
+Run `ng build --project=[project-name]` to build the element.
+The build artifacts will be stored in the dist/[project-name] directory.
 
 ## How to use this project
 
