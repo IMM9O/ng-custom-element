@@ -14,11 +14,11 @@ $ ng add @angular/elements --project=card-element
 $ npm i @webcomponents/custom-elements --save
 ```
 
-* Don't forget to add it to `polyfills.ts` file
+- Don't forget to add it to `polyfills.ts` file
 
 ```ts
-import "@webcomponents/custom-elements/src/native-shim";
-import "@webcomponents/custom-elements/custom-elements.min";
+import '@webcomponents/custom-elements/src/native-shim';
+import '@webcomponents/custom-elements/custom-elements.min';
 ```
 
 3. Create your component
@@ -27,7 +27,7 @@ import "@webcomponents/custom-elements/custom-elements.min";
 $ ng g c card-element
 ```
 
-* Just change ViewEncapsulation to be Native
+- Just change ViewEncapsulation to be Native
 
 ```ts
 @Component({
@@ -42,12 +42,12 @@ $ ng g c card-element
 
 ```ts
 // Angular imports
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule, Injector } from "@angular/core";
-import { createCustomElement } from "@angular/elements";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, Injector } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 
 // Component that needs to convert it to customElement
-import { CardElementComponent } from "./card-element/card-element.component";
+import { CardElementComponent } from './card-element/card-element.component';
 
 @NgModule({
   declarations: [CardElementComponent],
@@ -62,7 +62,7 @@ export class AppModule {
     const el = createCustomElement(CardElementComponent, {
       injector: this.injector
     });
-    customElements.define("card-element", el);
+    customElements.define('card-element', el);
   }
 }
 ```
@@ -71,9 +71,8 @@ export class AppModule {
 
 Run `npm run build:card` to build the element. The build artifacts will be stored in the elements/ directory.
 
-
 ## How to use this project
 
 1. Type `npm install` in your termainal to install packages dependencies
-2. Type `npm run start:card` in your termainal to start card project
+2. Type `npm run serve:ng-element` in your termainal to start card project
 3. You code live and running at [http://localhost:4200](http://localhost:4200/#)
